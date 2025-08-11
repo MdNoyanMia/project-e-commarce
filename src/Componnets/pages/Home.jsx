@@ -1,6 +1,6 @@
 import React from 'react'
 import Banner from '../layouts/Banner'
-import Terms from '../layouts/terms'
+import Terms from '../layouts/Terms'
 import Productpart from '../layouts/Productpart'
 import Newarrivals from '../layouts/Newarrivals'
 
