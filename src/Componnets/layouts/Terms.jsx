@@ -4,7 +4,7 @@ import Flex from '../Flex'
 import { RiNumber2 } from "react-icons/ri";
 import { FaTruck } from "react-icons/fa";
 import { FaUndo } from "react-icons/fa";
-import Heading from '../Heading';
+
 
 const Terms = () => {
     return (
