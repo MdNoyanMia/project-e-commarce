@@ -3,6 +3,7 @@ import Banner from '../layouts/Banner'
 import Terms from '../layouts/Terms'
 import Productpart from '../layouts/Productpart'
 import Newarrivals from '../layouts/Newarrivals'
+import OurBestsellers from '../layouts/OurBestsellers'
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
 <Terms/>
 <Productpart/>
 <Newarrivals/>
+<OurBestsellers/>
 </>
   
   )
