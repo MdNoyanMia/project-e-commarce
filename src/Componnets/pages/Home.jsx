@@ -4,6 +4,8 @@ import Terms from '../layouts/Terms'
 import Productpart from '../layouts/Productpart'
 import Newarrivals from '../layouts/Newarrivals'
 import OurBestsellers from '../layouts/OurBestsellers'
+import Phoneoftheyear from '../layouts/Phoneoftheyear'
+import Specialoffers from '../layouts/Specialoffers'
 
 const Home = () => {
   return (
@@ -15,6 +17,8 @@ const Home = () => {
 <Productpart/>
 <Newarrivals/>
 <OurBestsellers/>
+<Phoneoftheyear/>
+<Specialoffers/>
 </>
   
   )

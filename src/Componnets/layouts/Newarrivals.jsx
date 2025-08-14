@@ -11,6 +11,7 @@ import Slider from "react-slick";
 import NextArrow from '../NextArrow'
 import PrevArrow from '../PrevArrow'
 
+
 const Newarrivals = () => {
 
   var settings = {
@@ -32,6 +33,7 @@ const Newarrivals = () => {
         <Slider {...settings}>
           <div>
             <Prouductiteam Imgproduct={picture1} productBadge={'10%'} />
+          
           </div>
           <div>
             <Prouductiteam Imgproduct={picture2} productBadge={'Now'} />
