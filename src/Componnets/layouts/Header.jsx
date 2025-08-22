@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Container from '../Container'
 import Flex from '../Flex'
 import Image from '../Image'
@@ -12,12 +12,15 @@ import { FaCartArrowDown } from "react-icons/fa6";
 
 
 const Header = () => {
+
+  let [showCategory, setCategory ] = useState(true)
+
   return (
     <>
-      <div className='py-9'>
+      <div className='py-9' >
         <Container>
           <Flex className='flex gap-x-80'>
-            <div>
+            <div >
               <Link to={'/'}>
                 <Image imgSrc={logu} />
               </Link>
@@ -61,14 +64,51 @@ const Header = () => {
       </div>
 
       {/* 2nd div start */}
-      <div className='py-5 bg-[#D8D8D8]'>
+      <div className='py-5 bg-[#D8D8D8] relative'  >
         <Container>
-          <Flex className='justify-between'>
-            <div className='flex items-center gap-x-2 text-[#262626]'>
-              <FaBarsStaggered />
-              <h3>Shop by Category</h3>
+          <Flex className='justify-between' >
+
+
+            <div className='flex items-center gap-x-2 text-[#262626]' onClick={() => setCategory(!showCategory) }>
+
+              <div className='flex items-center  gap-x-2'>
+
+                <FaBarsStaggered />
+                <h3>Shop by Category</h3>
+              </div>
+
+              {showCategory &&
+
+
+                <ul className=' gap-x-5 text-[16px] font-bold text-noyan absolute left-15 top-15 bg-amber-50 rounded-2xl p-3'>
+
+                  <Link to={'/'}>
+                    <li className=' hover:text-black'>beauty</li>
+                  </Link>
+
+                  <Link to={'shop'}>
+                    <li className=' hover:text-black'>fragrances</li>
+                  </Link>
+
+                  <Link to={'about'}>
+                    <li className=' hover:text-black'>Furniture</li>
+                  </Link>
+
+                  <Link to={'contact'}>
+                    <li className=' hover:text-black'>Groecirise</li>
+                  </Link>
+
+                  <Link to={'journal'}>
+                    <li className=' hover:text-black'>beauty</li>
+                  </Link>
+                </ul>
+
+              }
 
             </div>
+
+
+
             <div className='relative '>
               <input className='bg-[#FFFFFF] p-[15px] w-[550px] border-none outline-none' type="text" placeholder='Search Products' />
 
