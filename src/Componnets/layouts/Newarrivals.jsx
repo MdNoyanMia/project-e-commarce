@@ -10,10 +10,22 @@ import "slick-carousel/slick/slick.css";
 import Slider from "react-slick";
 import NextArrow from '../NextArrow'
 import PrevArrow from '../PrevArrow'
+import axios from 'axios'
+import { useState, useEffect } from 'react'
 
 
 const Newarrivals = () => {
+  let [allData, setAllData] = useState([])
+  useEffect(() => {
+    async function alldatas() {
+      let data = await axios.get("https://dummyjson.com/products")
+      setAllData(data.data.products)
+    }
+    alldatas()
+  }, [])
 
+
+  //slider==
   var settings = {
     dots: false,
     infinite: true,
@@ -24,40 +36,53 @@ const Newarrivals = () => {
     prevArrow: <PrevArrow />
 
   };
-
+  //slider
   return (
     <>
-      <Container>
+
+      <Container className='bg-[#67676]'>
 
         <h3 className='text-[40px] font-bold text-black py-6 '> New Arrivals</h3>
-        <Slider {...settings}>
-          <div>
-            <Prouductiteam Imgproduct={picture1} productBadge={'10%'} />
-          
-          </div>
-          <div>
-            <Prouductiteam Imgproduct={picture2} productBadge={'Now'} />
-          </div>
+        <div className='-mx-3'>
+          <Slider {...settings}>
+            {
+              allData.map(item => (
 
-          <div>
-            <Prouductiteam Imgproduct={picture3} productBadge={'Now'} />
-          </div>
+                <>
+                  <div className='px-3 ' >
 
-          <div>
-            <Prouductiteam Imgproduct={picture1} productBadge={'10%'} />
-          </div>
-
-          <div>
-            <Prouductiteam Imgproduct={picture4} productBadge={'Now'} />
-          </div>
+                    <Prouductiteam Imgproduct={item.thumbnail} productBadge={item.category} price={`$ ${item.price}`} title={item.title} />
+                  </div>
+                </>
+              ))
+            }
 
 
+            {/* 
+
+            <div className='px-3'>
+              <Prouductiteam Imgproduct={picture2} productBadge={'Now'} />
+            </div>
+
+            <div className='px-3'>
+              <Prouductiteam Imgproduct={picture3} productBadge={'Now'} />
+            </div>
+
+            <div className='px-3'>
+              <Prouductiteam Imgproduct={picture1} productBadge={'10%'} />
+            </div>
+
+            <div className='px-3'>
+              <Prouductiteam Imgproduct={picture4} productBadge={'Now'} />
+            </div> */}
 
 
-        </Slider>
 
-      </Container>
 
+          </Slider>
+        </div >
+
+      </Container >
 
     </>
   )
