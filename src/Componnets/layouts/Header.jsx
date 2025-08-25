@@ -1,26 +1,43 @@
-import React, { useState } from 'react'
-import Container from '../Container'
-import Flex from '../Flex'
-import Image from '../Image'
-import logu from '/src/assets/logu.png'
-import { Link } from 'react-router-dom'
+import React, { useState, useRef, useEffect } from 'react';
+import Container from '../Container';
+import Flex from '../Flex';
+import Image from '../Image';
+import logu from '/src/assets/logu.png';
+import { Link } from 'react-router-dom';
 import { FaBarsStaggered } from "react-icons/fa6";
 import { CiSearch } from "react-icons/ci";
 import { FaUser } from "react-icons/fa";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { FaCartArrowDown } from "react-icons/fa6";
 
-
 const Header = () => {
+  const [show, setShow] = useState(false);
+  const categoryRef = useRef(null);
 
-  let [showCategory, setCategory ] = useState(true)
+  // Effect: listen for clicks outside the dropdown to close it
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (show && categoryRef.current && !categoryRef.current.contains(event.target)) {
+        setShow(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('touchstart', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+    };
+  }, [show]);
 
   return (
     <>
-      <div className='py-9' >
+      <div className='py-9'>
         <Container>
           <Flex className='flex gap-x-80'>
-            <div >
+
+            <div>
               <Link to={'/'}>
                 <Image imgSrc={logu} />
               </Link>
@@ -28,8 +45,8 @@ const Header = () => {
             </div>
 
             <div>
-              <ul className='flex gap-x-5 text-[16px] font-bold text-noyan'>
 
+              <ul className='flex gap-x-5 text-[16px] font-bold text-noyan'>
 
 
                 <Link to={'/'}>
@@ -55,66 +72,56 @@ const Header = () => {
 
 
 
+
               </ul>
 
             </div>
+
           </Flex>
 
         </Container>
       </div>
 
-      {/* 2nd div start */}
-      <div className='py-5 bg-[#D8D8D8] relative'  >
+      {/* 2nd header section */}
+      <div className='py-5 bg-[#D8D8D8] relative'>
         <Container>
-          <Flex className='justify-between' >
+          <Flex className='justify-between'>
+            {/* Category dropdown toggle */}
 
-
-            <div className='flex items-center gap-x-2 text-[#262626]' onClick={() => setCategory(!showCategory) }>
-
-              <div className='flex items-center  gap-x-2'>
-
+            <div className='relative' ref={categoryRef}>
+              <div
+                className='flex items-center gap-x-2 text-[#262626] cursor-pointer'
+                onClick={() => setShow((prev) => !prev)}
+              >
                 <FaBarsStaggered />
                 <h3>Shop by Category</h3>
               </div>
-
-              {showCategory &&
-
-
-                <ul className=' gap-x-5 text-[16px] font-bold text-noyan absolute left-15 top-15 bg-amber-50 rounded-2xl p-3'>
-
-                  <Link to={'/'}>
-                    <li className=' hover:text-black'>beauty</li>
-                  </Link>
-
-                  <Link to={'shop'}>
-                    <li className=' hover:text-black'>fragrances</li>
-                  </Link>
-
-                  <Link to={'about'}>
-                    <li className=' hover:text-black'>Furniture</li>
-                  </Link>
-
-                  <Link to={'contact'}>
-                    <li className=' hover:text-black'>Groecirise</li>
-                  </Link>
-
-                  <Link to={'journal'}>
-                    <li className=' hover:text-black'>beauty</li>
-                  </Link>
+              
+              {show && (
+                <ul className='gap-x-5 text-[16px] font-bold text-noyan absolute left-15 top-15 bg-amber-50 rounded-2xl p-3'>
+                  {/* Category links */}
+                  <Link to={'/'}><li className='hover:text-black'>Beauty</li></Link>
+                  <Link to={'shop'}><li className='hover:text-black'>Fragrances</li></Link>
+                  <Link to={'about'}><li className='hover:text-black'>Furniture</li></Link>
+                  <Link to={'contact'}><li className='hover:text-black'>Groceries</li></Link>
+                  <Link to={'journal'}><li className='hover:text-black'>Beauty</li></Link>
                 </ul>
-
-              }
+              )}
 
             </div>
 
-
-
-            <div className='relative '>
-              <input className='bg-[#FFFFFF] p-[15px] w-[550px] border-none outline-none' type="text" placeholder='Search Products' />
-
+            {/* Search bar */}
+            <div className='relative'>
+              <input
+                className='bg-[#FFFFFF] p-[15px] w-[550px] border-none outline-none'
+                type="text"
+                placeholder='Search Products'
+              />
               <CiSearch className='absolute right-3 top-1/2 -translate-y-1/2' />
 
             </div>
+
+            {/* Icons */}
             <div className='flex gap-x-3'>
               <div className='flex gap-x-1'>
                 <FaUser />
@@ -127,7 +134,13 @@ const Header = () => {
 
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
+
+
+
+
+
+

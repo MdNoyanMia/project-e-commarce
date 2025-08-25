@@ -37,13 +37,6 @@ const OurBestsellers = () => {
                     <h3 className='text-[40px] font-bold text-black py-6 '> Our Bestsellers</h3>
                     <Flex className='gap-x-10'>
 
-
-
-
-
-
-
-
                         {
                             allData.slice(2, 6).map(item => (
 
@@ -61,12 +54,7 @@ const OurBestsellers = () => {
 
 
 
-
-
-
-
-
-{/* 
+                        {/* 
                         <div className=''>
                             <Prouductiteam Imgproduct={picture5} productBadge={'10%'} className='relative' title={'Basic Crew Neck Tee'} price={'$44.00'} />
                             <Heading Text={'black'} as={'h6'} className=' pl-[0px] py-2 text-[#767676] text-[12px] font-normal ' />

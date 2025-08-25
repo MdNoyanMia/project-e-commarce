@@ -7,6 +7,7 @@ import About from './Componnets/pages/About'
 import Shop from './Componnets/pages/Shop'
 import Contact from './Componnets/pages/Contact'
 import Journal from './Componnets/pages/Journal'
+import Productsss from './Componnets/layouts/Productsss'
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
           <Route path='shop' element={<Shop/>} />
           <Route path='contact' element={<Contact/>} />
           <Route path='journal' element={<Journal/>} />
+          <Route path='Productsss' element={<Productsss/>} />
         
         </Route>
 
