@@ -33,11 +33,8 @@ const Prouductiteam = ({ Imgproduct, productBadge, title, price }) => {
                         <Heading Text={title} as={"h3"} className=' text-[#262626] text-[12px] font-bold' />
                         <Heading Text={price} as={"h3"} className=' text-[#767676] text-[12px] font-normal' />
                     </div>
-                    
                 </Container>
             </div>
-
-
         </>
     )
 }

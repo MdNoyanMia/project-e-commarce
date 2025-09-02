@@ -44,6 +44,7 @@ const Newarrivals = () => {
 
         <h3 className='text-[40px] font-bold text-black py-6 '> New Arrivals</h3>
         <div className='-mx-3'>
+          
           <Slider {...settings}>
             {
               allData.map(item => (

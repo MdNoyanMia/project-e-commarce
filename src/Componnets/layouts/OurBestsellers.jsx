@@ -57,7 +57,7 @@ const OurBestsellers = () => {
                         {/* 
                         <div className=''>
                             <Prouductiteam Imgproduct={picture5} productBadge={'10%'} className='relative' title={'Basic Crew Neck Tee'} price={'$44.00'} />
-                            <Heading Text={'black'} as={'h6'} className=' pl-[0px] py-2 text-[#767676] text-[12px] font-normal ' />
+                            <Heading    />
                         </div>
 
 

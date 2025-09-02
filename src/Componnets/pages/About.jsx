@@ -23,7 +23,7 @@ const About = () => {
         <div className='flex justify-between px-50  '>
         <div className='relative'>
             <Image imgSrc={picture1} className='' />
-          <Button btnText={'our brands'} className='absolute left-30 bottom-5'/>
+          <Button btnText={'our brands '} className='absolute left-30 bottom-5'/>
         </div>
 
 
