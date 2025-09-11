@@ -140,7 +140,7 @@ const Header = () => {
             </div>
 
             {showCart && (
-              <div className="bg-[#000] py-10 w-[1500px] px-5 absolute top-0 right-0">
+              <div className="bg-[#000] py-10 w-[1000px] px-5 absolute top-0 right-0">
                 <ImCross className=' text-white mb-6 cursor-pointer' onClick={() => setShowCart(false)} />
 
                 {/* Table Headers */}
