@@ -9,8 +9,15 @@ import { CiSearch } from "react-icons/ci";
 import { FaUser } from "react-icons/fa";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { FaCartArrowDown } from "react-icons/fa6";
+import { ImCross } from "react-icons/im";
+import { useSelector } from 'react-redux';
+
 
 const Header = () => {
+
+  let [showCart, setShowCart] = useState(false)
+  let data = useSelector((state) => state.cart.value)
+
   const [show, setShow] = useState(false);
   const categoryRef = useRef(null);
 
@@ -96,7 +103,7 @@ const Header = () => {
                 <FaBarsStaggered />
                 <h3>Shop by Category</h3>
               </div>
-              
+
               {show && (
                 <ul className='gap-x-5 text-[16px] font-bold text-noyan absolute left-15 top-15 bg-amber-50 rounded-2xl p-3'>
                   {/* Category links */}
@@ -122,13 +129,58 @@ const Header = () => {
             </div>
 
             {/* Icons */}
-            <div className='flex gap-x-3'>
+            <div className='flex gap-x-3 relative'>
               <div className='flex gap-x-1'>
                 <FaUser />
                 <IoMdArrowDropdown />
               </div>
-              <FaCartArrowDown />
+
+              <FaCartArrowDown onClick={() => setShowCart(!showCart)} />
+
             </div>
+
+            {showCart && (
+              <div className="bg-[#000] py-10 w-[1500px] px-5 absolute top-0 right-0">
+                <ImCross className=' text-white mb-6 cursor-pointer' onClick={() => setShowCart(false)} />
+
+                {/* Table Headers */}
+                <div className='flex text-white border-2 border-white p-5 px-3 font-bold items-center text-center'>
+                  <div className='w-1/5'>Title</div>
+                  <div className='w-1/5'>Price</div>
+                  <div className='w-1/5'>Image</div>
+                  <div className='w-1/5'>Quantity</div>
+                  <div className='w-1/5'>Subtotal</div>
+                </div>
+
+                {/* Cart Items */}
+                {data.map((item, index) => {
+                  const subtotal = parseFloat(item.price) * parseFloat(item.quantity);
+                  return (
+                    <div key={index} className='flex text-white border-2 border-white p-3 items-center justify-center text-center px-6'>
+                      <div className='w-1/5 flex justify-center'>{item.title}</div>
+                      <div className='w-1/5 flex justify-center'>${item.price}</div>
+                      <div className='w-1/5 flex justify-center'>
+                        <img src={item.img} alt={item.title} className='w-[100px] h-[50px] object-cover' />
+                      </div>
+                      <div className='w-1/5 flex justify-center'>{item.quantity}</div>
+                      <div className='w-1/5 flex justify-center'>${subtotal.toFixed(2)}</div>
+                    </div>
+                  );
+                })}
+
+
+                {/* Total Price */}
+                <div className='flex justify-end mt-6'>
+                  <div className='text-white text-xl font-bold border-t-2 border-white pt-4'>
+                    Total: $
+                    {data
+                      .reduce((acc, item) => acc + parseFloat(item.price) * parseFloat(item.quantity), 0)
+                      .toFixed(2)}
+                  </div>
+                </div>
+              </div>
+            )}
+
           </Flex>
         </Container>
 

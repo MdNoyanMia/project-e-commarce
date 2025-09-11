@@ -52,7 +52,7 @@ const Newarrivals = () => {
                 <>
                   <div className='px-3 ' >
 
-                    <Prouductiteam Imgproduct={item.thumbnail} productBadge={item.category} price={`$ ${item.price}`} title={item.title} />
+                    <Prouductiteam Imgproduct={item.thumbnail} productBadge={item.category} price={ item.price} title={item.title} />
                   </div>
                 </>
               ))
