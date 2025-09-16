@@ -38,7 +38,7 @@ const Specialoffers = () => {
                 <>
                   <div className=' ' >
 
-                    <Prouductiteam Imgproduct={item.thumbnail} productBadge={'10%'} price={`$ ${item.price}`} title={item.title} />
+                    <Prouductiteam Imgproduct={item.thumbnail} productBadge={'10%'} price={item.price} title={item.title} />
                     <Heading Text={'black'} as={'h6'} className=' pl-[0px] py-2 text-[#767676] text-[16px] font-normal' />
 
                   </div>

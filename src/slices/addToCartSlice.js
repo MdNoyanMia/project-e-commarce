@@ -18,6 +18,10 @@ export const addToCartSlice = createSlice({
     }else{
         state.value.push({...action.payload, quantity: 1})
     }
+
+
+
+    
     
      
     },
