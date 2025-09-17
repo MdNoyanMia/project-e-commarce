@@ -10,8 +10,8 @@ import { CiSearch } from "react-icons/ci";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { ImCross } from "react-icons/im";
 import { useSelector, useDispatch } from 'react-redux';
-import { removeFromCart, incrementQuantity, decrementQuantity } from '/src/slices/cartSlice'; 
-import { increment, decrement } from '../../slices/addToCartSlice';
+
+import { increment, decrement, removeFromCart } from '../../slices/addToCartSlice';
 
 const Header = () => {
   let [showCart, setShowCart] = useState(false);
@@ -146,7 +146,7 @@ const Header = () => {
                 <div className='w-[20%] flex justify-center'>${subtotal.toFixed(2)}</div>
                 <div className='w-[10%] flex justify-center'>
                   <button
-                    onClick={() => dispatch(removeFromCart({ id: item.id }))}
+                    onClick={() => dispatch(removeFromCart(item.id))}
                     className='text-white hover:text-red-500'
                   >
                     <ImCross />

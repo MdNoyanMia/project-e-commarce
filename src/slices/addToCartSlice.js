@@ -16,24 +16,33 @@ export const addToCartSlice = createSlice({
         state.value.push({ ...action.payload, quantity: 1 });
       }
     },
-    increment:(state,action) => {
-        state.value.map((item) =>{
-          if(item.title === action.payload.title){
-            item.quantity += 1;
-          }
-        })
+    increment: (state, action) => {
+      state.value.map((item) => {
+        if (item.title === action.payload) {
+          item.quantity += 1;
+        }
+      });
     },
-    decrement:(state,action) => {
-        state.value.map((item) =>{
-          if(item.title === action.payload.title){
-            item.quantity -= 1;
-          }
-        })
+    decrement: (state, action) => {
+      state.value.map((item) => {
+        if (item.title === action.payload) {
+          item.quantity -= 1;
+        }
+      });
     },
-    
+
+    removeFromCart: (state, action) => {
+      state.value.map((item,index) => {
+
+        if (item.id === action.payload) {
+        state.value.splice(index,1)
+        }
+      });
+    },
   },
 });
 
-export const { addtocart,increment,decrement } = addToCartSlice.actions;
+export const { addtocart, increment, decrement, removeFromCart } =
+  addToCartSlice.actions;
 
 export default addToCartSlice.reducer;
