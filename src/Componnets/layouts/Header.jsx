@@ -11,6 +11,7 @@ import { IoMdArrowDropdown } from "react-icons/io";
 import { ImCross } from "react-icons/im";
 import { useSelector, useDispatch } from 'react-redux';
 import { removeFromCart, incrementQuantity, decrementQuantity } from '/src/slices/cartSlice'; 
+import { increment, decrement } from '../../slices/addToCartSlice';
 
 const Header = () => {
   let [showCart, setShowCart] = useState(false);
@@ -129,14 +130,14 @@ const Header = () => {
                 </div>
                 <div className='w-[20%] flex justify-center items-center gap-x-2'>
                   <button
-                    onClick={() => dispatch(decrementQuantity({ id: item.id }))}
+                    onClick={() => dispatch(decrement(item.title))}
                     className='bg-white text-black px-2 py-1 rounded'
                   >
                     -
                   </button>
                   <span>{item.quantity}</span>
                   <button
-                    onClick={() => dispatch(incrementQuantity({ id: item.id }))}
+                    onClick={() => dispatch(increment(item.title))}
                     className='bg-white text-black px-2 py-1 rounded'
                   >
                     +
