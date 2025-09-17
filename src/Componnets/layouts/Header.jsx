@@ -146,7 +146,7 @@ const Header = () => {
                 <div className='w-[20%] flex justify-center'>${subtotal.toFixed(2)}</div>
                 <div className='w-[10%] flex justify-center'>
                   <button
-                    onClick={() => dispatch(removeFromCart(item.id))}
+                    onClick={() => dispatch(removeFromCart(item.title))}
                     className='text-white hover:text-red-500'
                   >
                     <ImCross />

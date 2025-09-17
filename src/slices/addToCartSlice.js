@@ -34,7 +34,7 @@ export const addToCartSlice = createSlice({
     removeFromCart: (state, action) => {
       state.value.map((item,index) => {
 
-        if (item.id === action.payload) {
+        if (item.title === action.payload) {
         state.value.splice(index,1)
         }
       });
